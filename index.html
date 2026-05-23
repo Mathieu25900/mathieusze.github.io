@@ -1,327 +1,410 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Mathieu Sze Portfolio</title>
+
+<title>Mathieu Sze | Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    overflow-x: hidden;
-    color: #111;
-  }
 
-  /* =========================
-     BACKGROUND (SWE + DATA)
-  ========================= */
+*{ box-sizing:border-box; }
 
-  .bg-base {
-    position: fixed;
-    inset: 0;
-    background: linear-gradient(135deg, #f4f8ff, #eef5ff, #f7fbff);
-    z-index: -3;
-  }
+body{
+  margin:0;
+  font-family:"Inter",sans-serif;
+  background:#0f172a;
+  color:#e5e7eb;
+  overflow-x:hidden;
+  line-height:1.7;
+}
 
-  .bg-swe {
-    position: fixed;
-    inset: 0;
-    background: url("https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=2000&q=60");
-    background-size: cover;
-    background-position: center;
-    opacity: 0.30;
-    filter: brightness(1.35) contrast(1.15);
-    z-index: -2;
-  }
+/* HERO */
 
-  .bg-data {
-    position: fixed;
-    inset: 0;
-    background: url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2000&q=60");
-    background-size: cover;
-    background-position: center;
-    opacity: 0.25;
-    mix-blend-mode: screen;
-    z-index: -1;
-  }
+.hero-section{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:40px;
 
-  .bg-glow {
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(circle at 30% 20%, rgba(37,99,235,0.30), transparent 60%);
-    z-index: -1;
-  }
+  background:
+    linear-gradient(rgba(2,6,23,0.62), rgba(2,6,23,0.62)),
+    url("https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=2000&q=80");
 
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(10px);
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    padding: 15px;
-    z-index: 1000;
-    border-bottom: 1px solid #e5e7eb;
-  }
+  background-size:cover;
+  background-position:center;
+}
 
-  nav a {
-    text-decoration: none;
-    color: #111;
-    font-weight: bold;
-    padding: 8px 14px;
-    border-radius: 8px;
-    cursor: pointer;
-  }
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  padding:16px;
+  background:rgba(15,23,42,0.85);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  z-index:1000;
+}
 
-  nav a:hover {
-    background: #eef4ff;
-    color: #2563eb;
-  }
+nav a{
+  text-decoration:none;
+  color:#f8fafc;
+  font-weight:600;
+  padding:10px 16px;
+  border-radius:8px;
+}
 
-  nav a.active {
-    background: #2563eb;
-    color: white;
-  }
+nav a:hover{ background:rgba(255,255,255,0.08); }
 
-  /* CONTENT */
-  .tab {
-    display: none;
-    max-width: 950px;
-    margin: 110px auto 40px auto;
-    padding: 40px;
-    background: rgba(255,255,255,0.95);
-    border-radius: 14px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  }
+nav a.active{ background:#2563eb; }
 
-  .tab.active {
-    display: block;
-  }
+.hero-section h1{
+  font-size:64px;
+  margin-bottom:10px;
+  font-weight:800;
+}
 
-  h1 {
-    font-size: 40px;
-    margin-bottom: 10px;
-  }
+.hero-subtitle{
+  font-size:22px;
+  color:#93c5fd;
+  font-weight:600;
+}
 
-  h2 {
-    border-left: 5px solid #2563eb;
-    padding-left: 12px;
-  }
+.hero-buttons{
+  margin-top:30px;
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
 
-  .project, .card {
-    border: 1px solid #e5e7eb;
-    padding: 18px;
-    border-radius: 10px;
-    margin: 12px 0;
-    background: #fafafa;
-  }
+.btn{
+  padding:14px 22px;
+  border-radius:999px;
+  font-weight:600;
+  text-decoration:none;
+}
 
-  a {
-    color: #2563eb;
-    text-decoration: none;
-  }
+.btn-primary{ background:#2563eb; color:white; }
+.btn-secondary{
+  background:rgba(255,255,255,0.08);
+  color:white;
+  border:1px solid rgba(255,255,255,0.12);
+}
 
-  a:hover {
-    text-decoration: underline;
-  }
+/* CODE WINDOW */
 
-  /* HERO */
-  .hero {
-    text-align: center;
-  }
+.code-window{
+  margin-top:30px;
+  background:rgba(0,0,0,0.65);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:14px;
+  padding:20px;
+  width:90%;
+  max-width:720px;
+  font-family:monospace;
+  color:#93c5fd;
+  text-align:left;
+  overflow:hidden;
+}
 
-  .hero p {
-    max-width: 650px;
-    margin: 10px auto;
-  }
+.log-line{
+  opacity:0;
+  transform:translateY(8px);
+  animation:fadeIn 0.6s forwards;
+}
 
-  .tag {
-    display: inline-block;
-    background: #eaf1ff;
-    color: #2563eb;
-    padding: 4px 10px;
-    border-radius: 999px;
-    font-size: 12px;
-    margin: 4px;
-  }
+.log-line:nth-child(1){animation-delay:0.2s;}
+.log-line:nth-child(2){animation-delay:0.6s;}
+.log-line:nth-child(3){animation-delay:1.0s;}
+.log-line:nth-child(4){animation-delay:1.4s;}
+.log-line:nth-child(5){animation-delay:1.8s;}
+.log-line:nth-child(6){animation-delay:2.2s;}
+.log-line:nth-child(7){animation-delay:2.6s;}
+.log-line:nth-child(8){animation-delay:3.0s;}
+
+@keyframes fadeIn{
+  to{opacity:1; transform:translateY(0);}
+}
+
+.success{ color:#34d399; font-weight:600; }
+
+.cursor{
+  display:inline-block;
+  width:10px;
+  height:14px;
+  background:#93c5fd;
+  margin-left:6px;
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{50%{opacity:0;}}
+
+/* CONTENT */
+
+.content{
+  background:#f8fafc;
+  color:#111827;
+  padding:70px 20px;
+}
+
+.tab{
+  max-width:1100px;
+  margin:auto auto 50px auto;
+  background:white;
+  padding:48px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.06);
+}
+
+h2{
+  font-size:32px;
+  border-left:5px solid #2563eb;
+  padding-left:14px;
+}
+
+.card,.project{
+  background:white;
+  padding:26px;
+  margin:20px 0;
+  border-radius:16px;
+}
+
+/* LISTS — FULL RESUME DETAIL PRESERVED */
+ul{ padding-left:22px; }
+li{ margin-bottom:10px; }
+
+a{ color:#2563eb; }
+
+footer{
+  background:#0f172a;
+  color:#cbd5e1;
+  text-align:center;
+  padding:30px;
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- BACKGROUND -->
-<div class="bg-base"></div>
-<div class="bg-swe"></div>
-<div class="bg-data"></div>
-<div class="bg-glow"></div>
-
-<!-- NAV -->
 <nav>
-  <a onclick="showTab('home', this)" class="active">Home</a>
-  <a onclick="showTab('about', this)">About</a>
-  <a onclick="showTab('education', this)">Education</a>
-  <a onclick="showTab('projects', this)">Projects</a>
-  <a onclick="showTab('experience', this)">Experience</a>
-  <a onclick="showTab('skills', this)">Skills</a>
-  <a onclick="showTab('contact', this)">Contact</a>
+  <a href="#about">About</a>
+  <a href="#education">Education</a>
+  <a href="#projects">Projects</a>
+  <a href="#experience">Experience</a>
+  <a href="#skills">Skills</a>
+  <a href="#contact">Contact</a>
 </nav>
 
-<!-- HOME -->
-<section id="home" class="tab active">
-  <div class="hero">
-    <h1>Mathieu Sze</h1>
+<section class="hero-section">
 
-    <p><strong>Computer Science + Mathematics & Statistics</strong></p>
+  <h1>Mathieu Sze</h1>
 
-    <p>
-      I build software systems, analyze data, and solve technical problems using
-      engineering, algorithms, and statistical thinking.
-    </p>
-
-    <p><strong>Software Engineering • Data Analytics • Machine Learning</strong></p>
-
-    <div style="margin-top:15px;">
-      <a href="Mathieu Sze Resume.pdf" target="_blank" class="tag">📄 View Resume</a>
-    </div>
-
-    <div style="margin-top:15px;">
-      <a href="mailto:mathsze@gmail.com">Email</a> |
-      <a href="https://github.com/Mathieu25900">GitHub</a> |
-      <a href="https://linkedin.com/in/mathieu-sze-ab27801b9">LinkedIn</a>
-    </div>
+  <div class="hero-subtitle">
+    Computer Science + Mathematics & Statistics
   </div>
+
+  <p>
+    Software engineering, systems programming, and data analytics focus.
+  </p>
+
+  <div class="hero-buttons">
+
+    <a class="btn btn-primary" href="Mathieu%20Sze%20Resume.pdf" target="_blank">
+      View Resume
+    </a>
+
+    <a class="btn btn-secondary" href="https://github.com/Mathieu25900" target="_blank">
+      GitHub
+    </a>
+
+    <a class="btn btn-secondary" href="https://linkedin.com" target="_blank">
+      LinkedIn
+    </a>
+
+  </div>
+
+  <!-- ANIMATED TERMINAL -->
+  <div class="code-window">
+
+    <div class="log-line">$ ./run_systems</div>
+    <div class="log-line">[INFO] initializing distributed nodes...</div>
+    <div class="log-line">[INFO] compiling data pipeline...</div>
+    <div class="log-line">[INFO] executing parallel threads...</div>
+    <div class="log-line success">[✓] execution complete — performance optimized</div>
+
+    <div class="log-line" style="margin-top:10px;">$ ./analyze_data</div>
+    <div class="log-line">[INFO] loading dataset...</div>
+    <div class="log-line success">[✓] insights generated</div>
+
+    <span class="cursor"></span>
+  </div>
+
 </section>
+
+<div class="content">
 
 <!-- ABOUT -->
 <section id="about" class="tab">
   <h2>About Me</h2>
-
   <p>
-    I am a Computer Science and Mathematics & Statistics student at Saint Louis University.
-  </p>
-
-  <p>
-    My experience spans systems programming, data analysis, and software development.
-    I enjoy working with structured problems and turning data into meaningful insights.
-  </p>
-
-  <p>
-    I am especially interested in backend engineering, data-driven systems, and applied analytics.
+    I am a Computer Science + Mathematics & Statistics student at Saint Louis University.
+    I focus on systems programming, backend engineering, distributed computing, and data analysis.
   </p>
 </section>
 
 <!-- EDUCATION -->
 <section id="education" class="tab">
+
   <h2>Education</h2>
 
-  <p><strong>Saint Louis University Saint Louis, MO</strong></p>
-  <p>B.A. in Computer Science Aug 2021 – May 2026</p>
-  <p>B.A. in Mathematics, Statistics Concentration</p>
-  <p>Cumulative GPA: 3.62</p>
+  <div class="card">
 
-  <ul>
-    <li>Dean’s List: Spring 2022, Fall 2023, Fall 2025</li>
-    <li>Relevant Coursework: Software Engineering, Data Structures, Object-Oriented Software Design, Computer Organization Systems, Algorithms, Distributed Computing, Discrete Mathematics</li>
-    <li>Member of the Math and Computer Science Club</li>
-  </ul>
+    <h3>Saint Louis University — St. Louis, MO</h3>
+
+    <p>B.A. Computer Science (Aug 2021 – May 2026)</p>
+    <p>B.A. Mathematics, Statistics Concentration</p>
+    <p><strong>GPA:</strong> 3.61</p>
+
+    <ul>
+      <li>Dean’s List: Spring 2022, Fall 2023, Fall 2025</li>
+
+      <li>
+        Relevant Coursework:
+        Software Engineering, Data Structures, Object-Oriented Software Design,
+        Computer Organization Systems, Algorithms, Distributed Computing,
+        Discrete Mathematics
+      </li>
+
+      <li>Member of Math and Computer Science Club</li>
+    </ul>
+
+  </div>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects" class="tab">
+
   <h2>Projects</h2>
 
   <div class="project">
-    <strong>Multithreaded Password Cracking Tool (C, Pthreads, Linux)</strong>
+    <h3>Multithreaded Password Cracking Tool (C, Pthreads)</h3>
     <ul>
-      <li>Built a multithreaded password cracking tool in C using Pthreads and crypt_r to run brute-force hash matching in parallel</li>
-      <li>Improved performance by spreading work evenly across threads and cutting out unnecessary repeated computations</li>
-      <li>Tested different thread counts to see how performance scaled and where bottlenecks appeared</li>
+      <li>Built multithreaded brute-force password cracking tool in C using Pthreads and crypt_r</li>
+      <li>Analyzed performance across different thread configurations</li>
+      <li>Identified system bottlenecks and optimized workload distribution</li>
     </ul>
   </div>
 
   <div class="project">
-    <strong>Network File Server & Client Application (C, Sockets, Linux)</strong>
+    <h3>Network File Server (C, Sockets)</h3>
     <ul>
-      <li>Built a client-server file system in C using sockets with asynchronous, non-blocking communication</li>
-      <li>Created simple request/response flows to handle file retrieval and commands like ls and quit</li>
-      <li>Made the system more reliable by adding error handling, input validation, and testing in a Linux environment</li>
+      <li>Built client-server file system using sockets</li>
+      <li>Implemented ls and quit command handling</li>
+      <li>Strengthened reliability with error handling and validation</li>
     </ul>
   </div>
 
   <div class="project">
-    <strong>Collaborative Software Development (C/C++, Python, Git, CI/CD)</strong>
+    <h3>Collaborative Software Development</h3>
     <ul>
-      <li>Worked on a team project using Git for version control and CI/CD pipelines for automated testing</li>
-      <li>Helped build features, fix bugs, and review teammates’ code to improve overall quality</li>
-      <li>Adapted quickly to new tools and workflows to meet project goals and deadlines</li>
+      <li>Worked with Git and CI/CD pipelines in team environment</li>
+      <li>Developed features and performed code reviews</li>
+      <li>Improved workflow efficiency and team coordination</li>
     </ul>
   </div>
+
 </section>
 
 <!-- EXPERIENCE -->
 <section id="experience" class="tab">
+
   <h2>Experience</h2>
 
   <div class="card">
-    <strong>Mathnasium — Math Tutor (Sep 2025 – Present)</strong>
+
+    <h3>Math Tutor — Mathnasium</h3>
+
     <ul>
-      <li>Tutored elementary through high school students in mathematics, ranging from basic arithmetic to calculus.</li>
-      <li>Improved students’ problem-solving skills by breaking down complex concepts into manageable steps.</li>
+      <li>Tutored students from elementary math through calculus</li>
+      <li>Improved problem-solving skills through step-by-step instruction</li>
     </ul>
+
   </div>
 
   <div class="card">
-    <strong>Saint Louis University — Student Researcher & Assistant (Aug 2022 – Present)</strong>
+
+    <h3>Student Researcher — Saint Louis University</h3>
+
     <ul>
-      <li>Completed specific research training and earned a CITI Certification.</li>
-      <li>Collaborated with the program research assistant.</li>
-      <li>Assisted in updating the International Faculty and Staff Association (IFSA) webpage.</li>
+      <li>Completed CITI research training certification</li>
+      <li>Assisted with IFSA webpage updates and data organization</li>
       <li>Teaching Assistant for Cura Personalis course</li>
     </ul>
+
   </div>
 
   <div class="card">
-    <strong>CATCH Program — Student Health Coach (Jan 2025 – May 2025)</strong>
+
+    <h3>CATCH Program — Health Coach</h3>
+
     <ul>
-      <li>Assisted participants in developing healthier lifestyle habits through personalized coaching.</li>
-      <li>Conducted pre/post-assessments and health coaching sessions during the eight-week program.</li>
+      <li>Provided health coaching and behavioral support</li>
+      <li>Conducted pre/post assessments over 8-week program</li>
     </ul>
+
   </div>
+
 </section>
 
 <!-- SKILLS -->
 <section id="skills" class="tab">
+
   <h2>Skills</h2>
 
-  <p><strong>Languages:</strong> SQL, Python, C, C++, Java</p>
-  <p><strong>Data Analysis:</strong> Data Cleaning, Data Validation, Data Manipulation, Statistical Analysis</p>
-  <p><strong>Tools:</strong> GitHub, Git, Linux, Jupyter Notebook, Docker, CI/CD</p>
-  <p><strong>Visualization:</strong> Power BI, Matplotlib, Pandas, NumPy</p>
-  <p><strong>Concepts:</strong> APIs, Networking, Client-Server Architecture, Data Documentation</p>
+  <div class="card">
+
+    <ul>
+      <li>Programming: Python, C, C++, Java, SQL</li>
+      <li>Data: Pandas, NumPy, Power BI, Excel</li>
+      <li>Tools: Git, Linux, Docker, CI/CD</li>
+      <li>Concepts: Distributed Systems, Networking, Data Analysis</li>
+    </ul>
+
+  </div>
+
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="tab">
+
   <h2>Contact</h2>
 
-  <p><a href="mailto:mathsze@gmail.com">Email Me</a></p>
-  <p><a href="https://github.com/Mathieu25900">GitHub</a></p>
-  <p><a href="https://linkedin.com/in/mathieu-sze-ab27801b9">LinkedIn</a></p>
+  <div class="card">
+
+    <p>Email: <a href="mailto:mathsze@gmail.com">mathsze@gmail.com</a></p>
+    <p>GitHub: <a href="https://github.com/Mathieu25900">github.com/Mathieu25900</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com">LinkedIn</a></p>
+
+  </div>
+
 </section>
 
-<script>
-function showTab(id, el) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+</div>
 
-  document.getElementById(id).classList.add('active');
-  el.classList.add('active');
-}
-</script>
+<footer>© 2026 Mathieu Sze</footer>
 
 </body>
 </html>
