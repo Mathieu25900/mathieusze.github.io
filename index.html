@@ -13,116 +13,129 @@
 
 <style>
 
-*{ box-sizing:border-box; }
+* { box-sizing: border-box; }
 
-body{
-  margin:0;
-  font-family:"Inter",sans-serif;
-  background:#0f172a;
-  color:#e5e7eb;
-  overflow-x:hidden;
-  line-height:1.7;
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: #0f172a;
+  color: #e5e7eb;
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* NAV */
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  padding: 14px;
+  background: rgba(15,23,42,0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  z-index: 1000;
+  flex-wrap: wrap;
+}
+
+nav a {
+  text-decoration: none;
+  color: #f8fafc;
+  font-weight: 600;
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+
+nav a:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+nav a:focus {
+  outline: 2px solid #93c5fd;
+  outline-offset: 2px;
 }
 
 /* HERO */
 
-.hero-section{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:40px;
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
 
   background:
     linear-gradient(rgba(2,6,23,0.62), rgba(2,6,23,0.62)),
     url("https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=2000&q=80");
 
-  background-size:cover;
-  background-position:center;
+  background-size: cover;
+  background-position: center;
 }
 
-nav{
-  position:fixed;
-  top:0;
-  width:100%;
-  display:flex;
-  justify-content:center;
-  gap:14px;
-  padding:16px;
-  background:rgba(15,23,42,0.85);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid rgba(255,255,255,0.08);
-  z-index:1000;
+.hero-section h1 {
+  font-size: 64px;
+  margin-bottom: 10px;
+  font-weight: 800;
 }
 
-nav a{
-  text-decoration:none;
-  color:#f8fafc;
-  font-weight:600;
-  padding:10px 16px;
-  border-radius:8px;
+.hero-subtitle {
+  font-size: 22px;
+  color: #93c5fd;
+  font-weight: 600;
 }
 
-nav a:hover{ background:rgba(255,255,255,0.08); }
-
-nav a.active{ background:#2563eb; }
-
-.hero-section h1{
-  font-size:64px;
-  margin-bottom:10px;
-  font-weight:800;
+.hero-buttons {
+  margin-top: 30px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.hero-subtitle{
-  font-size:22px;
-  color:#93c5fd;
-  font-weight:600;
+.btn {
+  padding: 14px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
 }
 
-.hero-buttons{
-  margin-top:30px;
-  display:flex;
-  gap:14px;
-  flex-wrap:wrap;
-  justify-content:center;
+.btn-primary { background: #2563eb; color: white; }
+.btn-secondary {
+  background: rgba(255,255,255,0.08);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.12);
 }
 
-.btn{
-  padding:14px 22px;
-  border-radius:999px;
-  font-weight:600;
-  text-decoration:none;
+/* TERMINAL */
+
+.code-window {
+  margin-top: 30px;
+  background: rgba(0,0,0,0.65);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 14px;
+  padding: 20px;
+  width: 90%;
+  max-width: 720px;
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #93c5fd;
+  text-align: left;
 }
 
-.btn-primary{ background:#2563eb; color:white; }
-.btn-secondary{
-  background:rgba(255,255,255,0.08);
-  color:white;
-  border:1px solid rgba(255,255,255,0.12);
-}
-
-/* CODE WINDOW */
-
-.code-window{
-  margin-top:30px;
-  background:rgba(0,0,0,0.65);
-  border:1px solid rgba(255,255,255,0.12);
-  border-radius:14px;
-  padding:20px;
-  width:90%;
-  max-width:720px;
-  font-family:monospace;
-  color:#93c5fd;
-  text-align:left;
-  overflow:hidden;
-}
-
-.log-line{
-  opacity:0;
-  transform:translateY(8px);
-  animation:fadeIn 0.6s forwards;
+.log-line {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: fadeIn 0.6s forwards;
 }
 
 .log-line:nth-child(1){animation-delay:0.2s;}
@@ -134,64 +147,96 @@ nav a.active{ background:#2563eb; }
 .log-line:nth-child(7){animation-delay:2.6s;}
 .log-line:nth-child(8){animation-delay:3.0s;}
 
-@keyframes fadeIn{
-  to{opacity:1; transform:translateY(0);}
+@keyframes fadeIn {
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.success{ color:#34d399; font-weight:600; }
-
-.cursor{
-  display:inline-block;
-  width:10px;
-  height:14px;
-  background:#93c5fd;
-  margin-left:6px;
-  animation:blink 1s infinite;
+.success {
+  color: #34d399;
+  font-weight: 600;
 }
 
-@keyframes blink{50%{opacity:0;}}
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  background: #93c5fd;
+  margin-left: 6px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
 
 /* CONTENT */
 
-.content{
-  background:#f8fafc;
-  color:#111827;
-  padding:70px 20px;
+.content {
+  background: #f8fafc;
+  color: #111827;
+  padding: 70px 20px;
 }
 
-.tab{
-  max-width:1100px;
-  margin:auto auto 50px auto;
-  background:white;
-  padding:48px;
-  border-radius:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.06);
+.tab {
+  max-width: 1100px;
+  margin: auto auto 50px auto;
+  background: white;
+  padding: 48px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
 }
 
-h2{
-  font-size:32px;
-  border-left:5px solid #2563eb;
-  padding-left:14px;
+.tab.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.card,.project{
-  background:white;
-  padding:26px;
-  margin:20px 0;
-  border-radius:16px;
+h2 {
+  font-size: 32px;
+  border-left: 5px solid #2563eb;
+  padding-left: 14px;
 }
 
-/* LISTS — FULL RESUME DETAIL PRESERVED */
-ul{ padding-left:22px; }
-li{ margin-bottom:10px; }
+.card, .project {
+  background: white;
+  padding: 26px;
+  margin: 20px 0;
+  border-radius: 16px;
+}
 
-a{ color:#2563eb; }
+ul { padding-left: 22px; }
+li { margin-bottom: 10px; }
 
-footer{
-  background:#0f172a;
-  color:#cbd5e1;
-  text-align:center;
-  padding:30px;
+a { color: #2563eb; }
+
+footer {
+  background: #0f172a;
+  color: #cbd5e1;
+  text-align: center;
+  padding: 30px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+  .hero-section h1 {
+    font-size: 40px;
+  }
+
+  .hero-subtitle {
+    font-size: 18px;
+  }
+
+  .tab {
+    padding: 24px;
+  }
+
+  nav {
+    gap: 6px;
+  }
 }
 
 </style>
@@ -202,6 +247,7 @@ footer{
 <nav>
   <a href="#about">About</a>
   <a href="#education">Education</a>
+  <a href="#highlights">Highlights</a>
   <a href="#projects">Projects</a>
   <a href="#experience">Experience</a>
   <a href="#skills">Skills</a>
@@ -213,16 +259,16 @@ footer{
   <h1>Mathieu Sze</h1>
 
   <div class="hero-subtitle">
-    Computer Science + Mathematics & Statistics
+    Systems Programming • Distributed Systems • Data Analysis
   </div>
 
   <p>
-    Software engineering, systems programming, and data analytics focus.
+    Computer Science + Mathematics & Statistics student focused on performance-driven software engineering.
   </p>
 
   <div class="hero-buttons">
 
-    <a class="btn btn-primary" href="Mathieu%20Sze%20Resume.pdf" target="_blank">
+    <a class="btn btn-primary" href="resume.pdf" target="_blank">
       View Resume
     </a>
 
@@ -230,13 +276,12 @@ footer{
       GitHub
     </a>
 
-    <a class="btn btn-secondary" href="https://linkedin.com" target="_blank">
+    <a class="btn btn-secondary" href="https://www.linkedin.com" target="_blank">
       LinkedIn
     </a>
 
   </div>
 
-  <!-- ANIMATED TERMINAL -->
   <div class="code-window">
 
     <div class="log-line">$ ./run_systems</div>
@@ -256,7 +301,6 @@ footer{
 
 <div class="content">
 
-<!-- ABOUT -->
 <section id="about" class="tab">
   <h2>About Me</h2>
   <p>
@@ -265,13 +309,10 @@ footer{
   </p>
 </section>
 
-<!-- EDUCATION -->
 <section id="education" class="tab">
-
   <h2>Education</h2>
 
   <div class="card">
-
     <h3>Saint Louis University — St. Louis, MO</h3>
 
     <p>B.A. Computer Science (Aug 2021 – May 2026)</p>
@@ -280,131 +321,154 @@ footer{
 
     <ul>
       <li>Dean’s List: Spring 2022, Fall 2023, Fall 2025</li>
-
-      <li>
-        Relevant Coursework:
-        Software Engineering, Data Structures, Object-Oriented Software Design,
-        Computer Organization Systems, Algorithms, Distributed Computing,
-        Discrete Mathematics
-      </li>
-
-      <li>Member of Math and Computer Science Club</li>
+      <li>Relevant Coursework: Software Engineering, Data Structures, Algorithms, Distributed Systems, Computer Organization</li>
+      <li>Math and Computer Science Club Member</li>
     </ul>
-
   </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects" class="tab">
+<section id="highlights" class="tab">
+  <h2>Highlights</h2>
 
+  <div class="card">
+    <ul>
+      <li>Double major in Computer Science and Mathematics & Statistics</li>
+      <li>Systems programming experience (C, sockets, multithreading)</li>
+      <li>Distributed systems and performance optimization focus</li>
+      <li>Research, tutoring, and leadership experience</li>
+    </ul>
+  </div>
+</section>
+
+<section id="projects" class="tab">
   <h2>Projects</h2>
 
   <div class="project">
-    <h3>Multithreaded Password Cracking Tool (C, Pthreads)</h3>
-    <ul>
-      <li>Built multithreaded brute-force password cracking tool in C using Pthreads and crypt_r</li>
-      <li>Analyzed performance across different thread configurations</li>
-      <li>Identified system bottlenecks and optimized workload distribution</li>
-    </ul>
-  </div>
+  <h3>Capstone Project — Mouser (SLU Software Engineering Capstone)</h3>
+  <ul>
+    <li>
+      Contributed to the development of a team-based software engineering capstone project focused on building a production-style application
+    </li>
+    <li>
+      Worked within a collaborative development workflow using Git and structured team roles
+    </li>
+    <li>
+      Implemented and integrated core features as part of a full semester-long engineering project
+    </li>
+    <li>
+      <a href="https://github.com/oss-slu/Mouser" target="_blank">GitHub Repository</a>
+    </li>
+  </ul>
+</div>
 
   <div class="project">
-    <h3>Network File Server (C, Sockets)</h3>
-    <ul>
-      <li>Built client-server file system using sockets</li>
-      <li>Implemented ls and quit command handling</li>
-      <li>Strengthened reliability with error handling and validation</li>
-    </ul>
-  </div>
+  <h3>Multithreaded Password Cracking Tool (C, Pthreads)</h3>
+  <ul>
+    <li>Implemented a multithreaded brute-force password cracking program in C using Pthreads and crypt_r</li>
+    <li>Distributed workload across multiple threads to improve parallel execution efficiency</li>
+    <li>Analyzed performance behavior under different thread configurations</li>
+    <li>
+      <a href="https://github.com/CSCI2510-Qinglei/lab-3-password-cracking-Mathieu25900" target="_blank">
+        GitHub Repository
+      </a>
+    </li>
+  </ul>
+</div>
+
+  <div class="project">
+  <h3>Network Chat Server (C, Sockets)</h3>
+  <ul>
+    <li>Built a client-server chat system using TCP sockets in C</li>
+    <li>Implemented message handling, connection management, and command parsing</li>
+    <li>Strengthened reliability through error handling and robust communication logic</li>
+    <li>
+      <a href="https://github.com/CSCI2510-Qinglei/lab-5-chat-server-Mathieu25900" target="_blank">
+        GitHub Repository
+      </a>
+    </li>
+  </ul>
+</div>
 
   <div class="project">
     <h3>Collaborative Software Development</h3>
     <ul>
-      <li>Worked with Git and CI/CD pipelines in team environment</li>
-      <li>Developed features and performed code reviews</li>
-      <li>Improved workflow efficiency and team coordination</li>
+      <li>Used Git and CI/CD pipelines in team-based development environment</li>
+      <li>Performed code reviews and feature integration</li>
+      <li>Improved workflow efficiency and collaboration structure</li>
     </ul>
   </div>
-
 </section>
 
-<!-- EXPERIENCE -->
 <section id="experience" class="tab">
-
   <h2>Experience</h2>
 
   <div class="card">
-
     <h3>Math Tutor — Mathnasium</h3>
-
     <ul>
       <li>Tutored students from elementary math through calculus</li>
-      <li>Improved problem-solving skills through step-by-step instruction</li>
+      <li>Improved conceptual understanding through step-by-step instruction</li>
     </ul>
-
   </div>
 
   <div class="card">
-
     <h3>Student Researcher — Saint Louis University</h3>
-
     <ul>
       <li>Completed CITI research training certification</li>
-      <li>Assisted with IFSA webpage updates and data organization</li>
+      <li>Assisted with IFSA web/data organization</li>
       <li>Teaching Assistant for Cura Personalis course</li>
     </ul>
-
   </div>
 
   <div class="card">
-
     <h3>CATCH Program — Health Coach</h3>
-
     <ul>
-      <li>Provided health coaching and behavioral support</li>
-      <li>Conducted pre/post assessments over 8-week program</li>
+      <li>Provided behavioral health coaching and assessments</li>
+      <li>Conducted structured pre/post program evaluation</li>
     </ul>
-
   </div>
-
 </section>
 
-<!-- SKILLS -->
 <section id="skills" class="tab">
-
   <h2>Skills</h2>
 
   <div class="card">
-
     <ul>
-      <li>Programming: Python, C, C++, Java, SQL</li>
+      <li>Languages: Python, C, C++, Java, SQL</li>
       <li>Data: Pandas, NumPy, Power BI, Excel</li>
       <li>Tools: Git, Linux, Docker, CI/CD</li>
       <li>Concepts: Distributed Systems, Networking, Data Analysis</li>
     </ul>
-
   </div>
-
 </section>
 
-<!-- CONTACT -->
 <section id="contact" class="tab">
-
   <h2>Contact</h2>
 
   <div class="card">
-
     <p>Email: <a href="mailto:mathsze@gmail.com">mathsze@gmail.com</a></p>
     <p>GitHub: <a href="https://github.com/Mathieu25900">github.com/Mathieu25900</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com">LinkedIn</a></p>
-
+    <p>LinkedIn: <a href="https://www.linkedin.com">LinkedIn</a></p>
   </div>
-
 </section>
 
 </div>
 
 <footer>© 2026 Mathieu Sze</footer>
+
+<script>
+  // reveal sections on scroll
+  const tabs = document.querySelectorAll(".tab");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  }, { threshold: 0.1 });
+
+  tabs.forEach(tab => observer.observe(tab));
+</script>
 
 </body>
 </html>
